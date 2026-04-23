@@ -225,11 +225,32 @@ export function MaterialLibrary() {
                  </div>
               </div>
 
-              <div className="pt-4 border-t border-white/5 flex flex-col space-y-2">
-                <button className="w-full py-2 bg-orange-600 hover:bg-orange-500 text-white rounded-lg text-sm font-bold transition shadow-lg shadow-orange-950/20">
+              <div className="pt-4 border-t border-white/5 flex flex-col space-y-2 relative">
+                
+                {/* Temporary Toast overlays */}
+                <div id="toast-lock" className="absolute -top-12 left-0 right-0 bg-emerald-500/90 text-white text-xs font-bold py-2 px-3 rounded shadow-lg backdrop-blur text-center transition-opacity opacity-0 pointer-events-none">
+                  ✔ 已成功设为全局基准
+                </div>
+                <div id="toast-push" className="absolute -top-12 left-0 right-0 bg-blue-500/90 text-white text-xs font-bold py-2 px-3 rounded shadow-lg backdrop-blur text-center transition-opacity opacity-0 pointer-events-none">
+                  ✔ 已自动推送并绑定至当前分镜
+                </div>
+
+                <button 
+                  onClick={() => {
+                    const t = document.getElementById('toast-lock');
+                    if (t) { t.style.opacity = '1'; setTimeout(() => t.style.opacity = '0', 2000); }
+                  }}
+                  className="w-full py-2 bg-orange-600 hover:bg-orange-500 text-white rounded-lg text-sm font-bold transition shadow-lg shadow-orange-950/20"
+                >
                   {selectedMaterial.is_locked ? 'Unlock Characteristics' : 'Lock as Project Base'}
                 </button>
-                <button className="w-full py-2 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-lg text-sm transition font-medium">
+                <button 
+                  onClick={() => {
+                    const t = document.getElementById('toast-push');
+                    if (t) { t.style.opacity = '1'; setTimeout(() => t.style.opacity = '0', 2000); }
+                  }}
+                  className="w-full py-2 bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-lg text-sm transition font-medium"
+                >
                   Push to Active Shot
                 </button>
               </div>
