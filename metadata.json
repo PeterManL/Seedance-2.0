@@ -1,0 +1,6 @@
+{
+  "name": "Seedance 2.0 Editor",
+  "description": "基于文本驱动的智能视频编辑器，包含统一素材资产管理和全局一致性。",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
